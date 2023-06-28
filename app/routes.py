@@ -2,6 +2,7 @@ from flask import render_template, redirect, url_for, flash
 from flask_login import login_user, logout_user, login_required, current_user
 from app import app, db
 from app.models import User, Task
+from flask import request
 
 @app.route('/')
 @login_required
@@ -38,4 +39,4 @@ def login():
             flash('Invalid username or password.')
     return render_template('login.html')
 
-@app.route('/logout')
+#@app.route('/logout')
