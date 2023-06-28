@@ -3,10 +3,12 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 app.config.from_pyfile('config.py')
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 
-#from app import routes, models
+from app import routes, models
+
+
