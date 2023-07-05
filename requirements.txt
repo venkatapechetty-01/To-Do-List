@@ -1,9 +1,11 @@
 # This file is used by pip to install required python packages
 # Usage: pip install -r requirements.txt
 
-python -m pip install --upgrade pip
-pip install Flask Werkzeug --upgrade
-python -m pip install Flask Werkzeug --upgrade
+
+/opt/render/project/src/.venv/bin/python -m pip install --upgrade pip
+
+/opt/render/project/src/.venv/bin/pip install Flask Werkzeug --upgrade
+/opt/render/project/src/.venv/bin/python -m pip install Flask Werkzeug --upgrade
 
 
 # Flask Framework
