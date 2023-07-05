@@ -2,12 +2,6 @@
 # Usage: pip install -r requirements.txt
 
 
-
-
-/opt/render/project/src/.venv/bin/pip install Flask Werkzeug --upgrade
-/opt/render/project/src/.venv/bin/python -m pip install Flask Werkzeug --upgrade
-
-
 # Flask Framework
 Flask==2.2.2
 
