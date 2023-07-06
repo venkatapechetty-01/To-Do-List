@@ -6,6 +6,7 @@ from app.models import Task, User
 from app.forms import RegisterForm, LoginForm, TodoForm,EditTodoForm
 from urllib.parse import urlencode
 from werkzeug.urls import url_encode
+from urllib.parse import quote
 
 todo = Blueprint('tasks', __name__)
 
