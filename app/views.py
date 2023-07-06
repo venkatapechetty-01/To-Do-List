@@ -4,6 +4,7 @@ from flask_login import current_user, login_user,logout_user
 from app import db
 from app.models import Task, User
 from app.forms import RegisterForm, LoginForm, TodoForm,EditTodoForm
+from urllib.parse import urlencode
 
 todo = Blueprint('tasks', __name__)
 
