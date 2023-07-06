@@ -1,17 +1,14 @@
 {% extends 'base.html'%}
 {% block content%}
+</div>
 <section class="container">
    <div class="row">
       <div class="col" a>
          <!-- A column inside a row inside a container! -->
-         <form action="" method="post" novalidate>
+         <form action="" method="post">
             <p>
                {{ form.task_name.label }}<br>
                {{ form.task_name(size =32) }}
-            </p>
-            <p>
-               {{form.description.label}}<br>
-               {{form.description(size=32) }}
             </p>
             <p>
                {{ form.due_date.label }}<br>
@@ -26,4 +23,4 @@
       </div>
    </div>
 </section>
-{% endblock%}
+{% endblock %}
