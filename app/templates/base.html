@@ -31,27 +31,11 @@
   margin: 0;
   color: blue;
   }
-  #round {
-  border-radius: 25px;
-  border: 2px solid #00bfff;
-  padding: 20px; 
-  }
-  .add_button {
-  border-radius: 25px;
-  color: blue;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: fuchsia;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  }
 </style>
 <body>
   <header class="container">
      <div class="row">
-        <h1 class="col-sm-4">Stay Organised, {{current_user.first_name}}</h1>
+        <h1 class="col-sm-8">To Do App</h1>
         <nav class="col-sm-8 text-right">
            <p><a href="{{ url_for('tasks.home') }}">Home</a></p>
            {% if current_user.is_anonymous %}

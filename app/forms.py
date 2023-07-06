@@ -22,12 +22,14 @@ class LoginForm(FlaskForm):
 
 class TodoForm(FlaskForm):
     task_name = StringField('Name', validators=[DataRequired()])
+    description=StringField('Description')
     due_date = DateField('Due Date', validators=[DataRequired()])
-    status = SelectField('Status', choices=[('Complete', 'Complete'), ('Not Started', 'Not Started ')])
+    status = SelectField('Status', choices=[('Not Started', 'Not Started '),('In Progress', 'In Progress'),('Complete', 'Complete')])
     submit = SubmitField('Add Task')
 
 class EditTodoForm(FlaskForm):
     task_name = StringField('Name', validators=[DataRequired()])
+    description=StringField('Description')
     due_date = DateField('Due Date', validators=[DataRequired()])
-    status = SelectField('Status', choices=[('COMPLETED', 'COMPLETED'), ('NOTSTARTED', 'NOTSTARTED')])
-    submit = SubmitField('Edit Task')
+    status = SelectField('Status', choices=[('Not Started', 'Not Started '),('In Progress', 'In Progress'),('Complete', 'Complete')])
+    submit = SubmitField('Save')

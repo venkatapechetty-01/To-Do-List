@@ -1,4 +1,4 @@
-from flask import flash, redirect, render_template, request, Blueprint, abort,jsonify
+from flask import flash, redirect, render_template, request, Blueprint, abort,jsonify,url_for
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import current_user, login_user,logout_user
 from app import db
@@ -62,7 +62,7 @@ def add_tasks():
         return render_template('add_todo.html',form=form)
     if request.method == 'POST':
         if form.validate_on_submit:
-            todo = Task(task_name =form.task_name.data,status =form.status.data,
+            todo = Task(task_name =form.task_name.data, description=form.description.data, status =form.status.data,
                         due_date =form.due_date.data, todo_owner = user.id
                        )
             db.session.add(todo)
@@ -74,30 +74,43 @@ def add_tasks():
 def todos():
     
     todos = Task.query.filter_by(todo_owner = current_user.id)
-    print(todos)
     return render_template('todos.html', todos = todos)
 
     
-@todo.route('/edit_task/<int:id>', methods=['GET', 'POST'])
-def edit_task(id):
-    user = current_user
-    form = EditTodoForm()
+@todo.route('/edit_todo/<int:id>', methods=['GET', 'POST'])
+def edit_todo(id):
     task = Task.query.filter_by(id =id,todo_owner = current_user.id).first()
+    form = EditTodoForm(obj=task)
+    #breakpoint()
+    #form = EditTodoForm()
+    form.errors
+    print(form.task_name.data)
+    print(form.description.data)
+    if form.validate_on_submit:
+        print('inside if')
+        task.task_name = form.task_name.data
+        task.description = form.description.data
+        task.due_date = form.due_date.data
+        task.status = form.status.data
+        #breakpoint()
+        db.session.commit()
+        return redirect('/todos')
+    else:
+        return render_template('edit_todo.html', form=form , task=task)
     
+
+'''@todo.route('/edit_todo/<int:task_id>', methods=['GET', 'POST'])
+def edit_task(task_id):
+    task = Task.query.get_or_404(task_id)
+    form = EditTodoForm(obj=task)
+
     if form.validate_on_submit():
         task.task_name = form.task_name.data
-        task.due_date = form.due_date.data
         task.status = form.status.data
         db.session.commit()
         return redirect('/todos')
-        
-    elif request.method == 'GET':
-        form.task_name.data = task.task_name
-        form.due_date.data = task.due_date
-        form.status.data = task.status
-    return render_template('edit_todo.html',form=form)
 
-
+    return render_template('edit_todo.html', form=form, task=task)'''
     
 # @todo.route('/edit_task/<int:id>', methods=['GET', 'POST'])
 # def edit_task(id):
