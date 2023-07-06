@@ -143,3 +143,6 @@ def users():
 
         }
     return jsonify(res)
+
+
+encoded_data = urlencode(data)
